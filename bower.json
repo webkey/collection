@@ -1,20 +1,25 @@
 {
-  "name": "project",
-  "description": "project description",
+  "name": "webkey-colleciton",
+  "version": "1.0.0-beta",
+  "description": "collection of plugins, snippets and solutions",
   "main": "index.js",
   "authors": [
-    "Astronim"
+    "Webkey"
   ],
-  "license": "ISC",
-  "homepage": "",
-  "private": true,
   "ignore": [
-    "**/.*",
+    ".bowerrc",
+    "*.json",
+    "*.js",
+    ".gitignore",
+    "README.md",
+    "start.bat",
     "node_modules",
     "bower_components",
-    "src/libs/",
-    "test",
-    "tests"
+    "*.idea",
+    "*.iml",
+    "*.ipr",
+    "**/libs",
+    "**/npm-debug.log"
   ],
   "dependencies": {
     "slick-carousel": "^1.6.0",
