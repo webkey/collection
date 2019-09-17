@@ -1,0 +1,49 @@
+<!--!!! Динамически добавленый код !!!-->
+<div class="order-calc-js">
+  <table class="c-table">
+    <thead class="c-thead">
+      <tr class="c-tr">
+        @@include("_tpl_order-calc-head.html")
+      </tr>
+    </thead>
+    <tbody class="c-tbody">
+      <tr class="c-tr">
+        @@include("_tpl_order-calc-item.html", {
+        "href": "#",
+        "title": "Product 1",
+        "src": "../../../img/temp/img_640_01.jpg",
+        "price": {"val": "100.99", "unit": "$"},
+        "priceOld": {"val": "200.99", "unit": "$"},
+        "length": 1
+        })
+      </tr>
+      <tr class="c-tr">
+        @@include("_tpl_order-calc-item.html", {
+        "href": "#",
+        "title": "Product 2",
+        "src": "../../../img/temp/img_640_02.jpg",
+        "price": {"val": "50.99", "unit": "$"},
+        "priceOld": {"val": "100.99", "unit": "$"},
+        "length": 1
+        })
+      </tr>
+      <tr class="c-tr">
+        @@include("_tpl_order-calc-item.html", {
+        "href": "#",
+        "title": "Product 3",
+        "src": "../../../img/temp/img_640_03.jpg",
+        "price": {"val": "10.99", "unit": "$"},
+        "priceOld": {"val": "20.99", "unit": "$"},
+        "length": 1
+        })
+      </tr>
+    </tbody>
+    <tfoot class="order-calc__total-results-js">
+      <tr class="c-tr">
+        @@include("_tpl_order-calc-results.html")
+      </tr>
+    </tfoot>
+  </table>
+  <div class="order-calc__empty-js" style="display: none">Cart is empty</div>
+</div>
+<button class="order-calc__clear-js" disabled>Clear trigger</button>

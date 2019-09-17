@@ -1,0 +1,424 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  @include font-title;
+  color: $title-color;
+  margin: 0 0 $bottom-space;
+  @include media("<mob") {
+    margin: 0 0 round-float($bottom-space * 0.85, 1);
+  }
+}
+
+h1 {
+  font-weight: 300;
+  @include font-h1;
+}
+
+h2 {
+  @include font-h2;
+
+  &::before {
+    content: "§ ";
+    display: inline;
+  }
+}
+
+h3 {
+  @include font-h3;
+}
+
+h4 {
+  @include font-h4;
+}
+
+h5 {
+  @include font-size($font-size-h5, $line-height-h5);
+}
+
+h6 {
+  @include font-normal;
+  @include font-size($font-size-h6, $line-height-h6);
+  text-transform: uppercase;
+}
+
+.text-title {
+  @include font-bold;
+  font-size: 1.8rem;
+  line-height: $line-height;
+  margin-bottom: $bottom-space / 2;
+
+  .content & + ul,
+  .content & + ol,
+  .content & + table {
+    margin-top: $bottom-space / 2;
+  }
+}
+
+p {
+  padding: 0;
+  margin: 0 0 $bottom-space;
+  @include media("<mob");
+}
+
+hr {
+  line-height: 1px;
+  height: 0;
+  border: none;
+  background: none;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $bottom-space;
+}
+
+a {
+  color: $link-color;
+  text-decoration: underline;
+  cursor: default;
+  //outline: none
+  &:link {
+    cursor: pointer;
+  }
+
+  .no-touchevents &:hover {
+    text-decoration: none;
+  }
+
+  &[href^="javascript:"] {
+    cursor: default;
+  }
+}
+
+.bd-lead {
+  @include font-size(2.3rem, 3.5rem);
+  font-weight: 300;
+}
+
+img {
+  border: none;
+  vertical-align: top;
+  max-width: 100%;
+
+  table & {
+    max-width: none;
+  }
+}
+
+.table-auto {
+  position: relative;
+  overflow: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0 $bottom-space;
+
+  table {
+    margin-bottom: 0;
+    width: auto;
+    min-width: 100%;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+  td, th {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: $text-color;
+    text-align: left;
+    padding: 1rem 1.2rem;
+    box-sizing: border-box;
+    border-color: $border-color;
+  }
+}
+
+b, strong, th {
+  @include font-bold;
+}
+
+i, em {
+  @include font-italic;
+}
+
+i b, i strong, em b, em strong, b i, b em, strong i, strong em {
+  @include font-bold-italic;
+}
+
+.mark {
+  color: $mark-color;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+.text-color-alt {
+  color: $text-color-light;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.nobr {
+  white-space: nowrap;
+}
+
+.bottom-space {
+  margin-bottom: $bottom-space;
+}
+
+.hide {
+  font-size: 0;
+  line-height: 0;
+}
+
+@include media("<desk") {
+  .hide-desk-s {
+    display: none !important;
+  }
+}
+
+@include media("<desk-s") {
+  .hide-lap {
+    display: none !important;
+  }
+}
+
+@include media("<lap") {
+  .hide-net {
+    display: none !important;
+  }
+}
+
+code.l,
+code.red,
+code.green {
+  display: inline;
+  padding: 0 2px;
+  margin: 0;
+}
+
+.green {
+  color: lightseagreen;
+}
+
+.red {
+  color: lightcoral;
+}
+
+.gray {
+  color: #999999;
+}
+
+.warning {
+  display: block;
+  background-image: url(../../img/icon-warning.svg);
+  background-repeat: no-repeat;
+  background-position: 10px 10px;
+  background-size: 24px;
+  padding: 10px 10px 10px 45px;
+  //border: 1px solid $base-color
+  background-color: rgba($base-color, 0.1);
+}
+
+.accent {
+  font-size: 1.2em;
+}
+
+
+/* typography elements */
+.#{$article-content} {
+  // Title layouts
+  @each $tags in h2, h3, h4, h5, h6, ".h2", ".h3", ".h4", ".h5", ".h6" {
+    p + #{$tags},
+    ul + #{$tags},
+    ol + #{$tags},
+    hr + #{$tags},
+    table + #{$tags},
+    .table-auto + #{$tags} {
+      margin-top: 6.2rem;
+
+      @include media("<mob") {
+        margin-top: round-float($bottom-space * 0.85, 1);
+      }
+    }
+  }
+
+  // Tables
+  table {
+    margin-bottom: $bottom-space;
+  }
+
+  .table-auto table {
+    margin-bottom: 0;
+  }
+
+  .tbl {
+    border: none;
+
+    td,
+    th {
+      color: $text-color;
+      background-color: $bg-color-alt;
+      border: 0 solid $border-color;
+      font-size: 1.4rem;
+      line-height: 1.2;
+
+      &:first-child,
+      &:first-child {
+        border-left-width: 1px;
+      }
+
+      &:last-child,
+      &:last-child {
+        border-right-width: 1px;
+      }
+    }
+
+    td {
+      border-top-width: 1px;
+    }
+
+    tbody tr:first-child td {
+      border-top-width: 0;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    th,
+    thead td {
+      @include font-bold;
+      font-size: 1.6rem;
+      text-align: left;
+    }
+
+    th,
+    thead td,
+    tfoot td {
+      background: $bg-color-alt;
+      color: $text-color-light;
+      border-color: $bg-color-alt;
+      border-top-width: 0;
+    }
+  }
+
+  // Lists
+  // =====
+  $list-space: 1.5em !default;
+
+  & > ul,
+  & > ol {
+    margin: 0 0 $bottom-space;
+    padding: 0;
+    list-style: none;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+
+    li {
+      padding-left: $list-space;
+      margin: 0 0 1.2rem;
+      position: relative;
+    }
+  }
+
+  & > ul {
+    & > li {
+      &::before {
+        content: "—";
+        display: block;
+        float: left;
+        margin: 0 0 0 -#{$list-space};
+        color: $base-color;
+      }
+    }
+  }
+
+  & > ol {
+    $list-space: 1.5rem;
+    counter-reset: section;
+
+    & > li {
+      counter-increment: section;
+      padding-left: $list-space;
+
+      &::before {
+        display: block;
+        float: left;
+        content: counter(section) ".";
+        margin: 0 0 0 -#{$list-space};
+        color: $base-color;
+      }
+    }
+  }
+
+  & > ul,
+  & > ol {
+    ul,
+    ol {
+      margin: round-float($bottom-space * 0.5, 1) 0;
+    }
+  }
+
+  // Images
+  & > img,
+  & > .layout-text img,
+  & > .layout-flood img {
+    display: block;
+    text-align: center;
+    margin: 3rem auto 4rem;
+
+    @include media("<tab") {
+      margin-top: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    @include media("<mob") {
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    &[align="left"], &.imgl {
+      float: left;
+      text-align: left;
+      max-width: 45%;
+      margin-top: 0;
+      margin-right: 3rem;
+
+      @include media("<tab") {
+        margin-right: 2rem;
+      }
+
+      @include media("<mob") {
+        float: none;
+        text-align: left;
+        max-width: none;
+        margin-right: auto;
+      }
+    }
+
+    &[align="right"], &.imgr {
+      float: right;
+      text-align: right;
+      max-width: 45%;
+      margin-top: 0;
+      margin-left: 3rem;
+
+      @include media("<tab") {
+        margin-left: 2rem;
+      }
+
+      @include media("<mob") {
+        float: none;
+        text-align: left;
+        max-width: none;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+/* typography elements end */

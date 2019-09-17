@@ -1,0 +1,120 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+html {
+  font-size: 62.5%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  // Блокировать скролла
+  // ===================
+  &.css-scroll-fixed:not(.open-only-mob) {
+    @include scroll-blocked;
+  }
+
+  // Не блокировать скролл, если есть класс open-only-mob
+  // ====================================================
+  &.css-scroll-fixed.open-only-mob {
+    @include media("<tab") {
+      @include scroll-blocked;
+    }
+  }
+}
+
+body {
+  color: $text-color;
+  height: 100%;
+  min-width: 320px;
+  padding: 0;
+  margin: 0;
+
+  @include font-normal;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  background: $bg-color url(../../img/empty.png) repeat fixed;
+  -webkit-font-smoothing: antialiased;
+
+  @include media("<mob") {
+    font-size: $font-size--mob;
+    line-height: $line-height--mob;
+  }
+}
+
+.main {
+  padding: 30px 0 0;
+  position: relative;
+  clear: both;
+  z-index: 4;
+}
+
+.#{$article-content} {
+  padding: 60px 0;
+}
+
+.content {
+  margin: 0 0 $bottom-space 0;
+}
+
+.header {
+  position: relative;
+  z-index: 5;
+  background-color: $base-color;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.footer {
+  margin: 0 auto;
+  position: relative;
+  clear: both;
+  z-index: 5;
+  background-color: lightgreen;
+}
+
+.max-wrap {
+  max-width: $layout-width;
+}
+
+.layout {
+  @include padding-horizontal($layout-space-horizontal);
+  @include push-auto;
+  @include media("<tab") {
+    @include padding-horizontal(0);
+  }
+}
+
+.max-wrap-text {
+  max-width: $layout-text-width;
+}
+
+.layout-text {
+  max-width: $layout-text-width;
+  @include padding-horizontal($layout-text-space-horizontal);
+  @include push-auto;
+  @include media("<tab") {
+    @include padding-horizontal($layout-text-space-horizontal-md);
+  }
+
+  @include media("<tab-s") {
+    @include padding-horizontal($layout-text-space-horizontal-sm);
+  }
+}
+
+.max-wrap-flood {
+  max-width: $layout-flood-width;
+}
+
+.layout-flood {
+  max-width: $layout-flood-width;
+  @include padding-horizontal($layout-flood-space-horizontal);
+  @include push-auto;
+  @include media("<tab") {
+    @include padding-horizontal($layout-text-space-horizontal-md);
+  }
+
+  @include media("<tab-s") {
+    @include padding-horizontal($layout-text-space-horizontal-sm);
+  }
+}
