@@ -1,6 +1,6 @@
 {
   "name": "webkey-colleciton",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "collection of plugins, snippets and solutions",
   "main": "index.js",
   "authors": [
@@ -30,9 +30,7 @@
     "include-media": "^1.4.9",
     "jquery-ui": "^1.12.1",
     "clipboard": "^2.0.1",
-    "highlightjs": "^9.12.0"
-  },
-  "devDependencies": {
+    "highlightjs": "^9.12.0",
     "mathsass": "^0.9.5"
   }
 }
